@@ -1,0 +1,12 @@
+<h1>Add on Ingredient</h1>
+<hr />
+
+<%= form_for @recipe_ingredient do |f| %>
+  <%= f.select :recipe_id, options_for_select(@recipes) %>
+  <%= f.select :ingredient_id, options_for_select(@ingredients) %>
+  <%= f.text_field :amount, required: true, placeholder: 'Amount'%>
+  <%= f.submit nil, class: 'btn' %>
+<% end %>
+
+<%= link_to 'All Recipes', recipes_path %>
+<%= link_to 'All Ingredients', ingredients_path %>

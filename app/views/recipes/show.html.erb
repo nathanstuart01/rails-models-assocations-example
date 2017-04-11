@@ -1,0 +1,26 @@
+<h1>Recipe: <%= @recipe.name %> </h1>
+
+<% unless @recipe.description.empty? %>
+  <p>
+    <strong><Description:</strong>
+    <%= @recipe.description %>
+  </p>
+  <hr />
+<% end %>
+
+<% if @recipe.ingredients.any? %>
+  <h5>Ingredients</h5>
+  <ul>
+    <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
+      <li>
+        <%= recipe_ingredient.ingredient.name %> - <%= recipe_ingredient.amount %> -
+        <%= link_to 'Remove', recipe_ingredient_path(recipe_ingredient), method: :delete %>
+        </li>
+      <% end %>
+    </ul>
+    <% else %>
+      <h5>No Ingredients Found</h5>
+  <% end %>
+
+  <%= link_to 'All Recipes', recipe_path %>
+  <%= link_to 'Edit', edit_recipe_path(@recipe) %>
